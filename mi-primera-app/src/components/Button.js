@@ -1,6 +1,7 @@
 import React from "react";
 
 const Button = ({
+  children,
   id,
   className,
   onClick,
@@ -8,7 +9,6 @@ const Button = ({
   value,
   style,
   disabled,
-  text,
 }) => {
   return (
     <button
@@ -20,7 +20,7 @@ const Button = ({
       style={style}
       disabled={disabled}
     >
-      {text}
+      {children}
     </button>
   );
 };
