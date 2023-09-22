@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import Ditto from "../assets/images/ditto.png";
+import Image from "../assets/images/ditto.png";
+import Button from "../components/Button";
+import Layout from "../components/Layout";
 
 const Detail = () => {
   // Ir a buscar los datos de un pokemon y mostrarlos en pantalla
@@ -24,12 +26,12 @@ const Detail = () => {
   if (!detail) return <>Cargando...</>;
 
   return (
-    <>
+    <Layout id="detail" theme="default" className="page detail">
       <h1>Datos del pókemon</h1>
 
       <div className="card">
         <div className="card-image">
-          <img src={Ditto} alt="" />
+          <img src={Image} alt="" />
         </div>
         <div className="card-body">
           <h2>Name: {detail.name}</h2>
@@ -37,8 +39,12 @@ const Detail = () => {
           <p>Peso: {detail.weight}</p>
           <p>Experiencia base: {detail.base_experience}</p>
         </div>
+        <Button>
+          <strong>ICONO</strong>
+          Comprar
+        </Button>
       </div>
-    </>
+    </Layout>
   );
 };
 
