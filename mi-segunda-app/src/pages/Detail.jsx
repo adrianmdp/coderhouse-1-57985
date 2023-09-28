@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import Image from "../assets/images/ditto.png";
 import Button from "../components/Button";
 import Layout from "../components/Layout";
@@ -9,25 +9,27 @@ const Detail = () => {
 
   const [detail, setDetail] = useState();
 
+  const { pokemonName } = useParams();
+
   useEffect(() => {
-    fetch(
-      "https://pokeapi.co/api/v2/pokemon/ditto?param1=testParam1&param2=testParam2"
-    )
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         setDetail(data);
       });
-  }, []);
-
-  console.log(detail);
+  }, [pokemonName]);
 
   if (!detail) return <>Cargando...</>;
 
   return (
     <Layout id="detail" theme="default" className="page detail">
-      <h1>Datos del pókemon</h1>
+      <h1>Datos del pókemon {pokemonName}</h1>
+
+      <Link to="/detail/ditto">Ditto</Link>
+      <Link to="/detail/charmander">charmander</Link>
+      <Link to="/detail/pikachu">Pikachu</Link>
 
       <div className="card">
         <div className="card-image">

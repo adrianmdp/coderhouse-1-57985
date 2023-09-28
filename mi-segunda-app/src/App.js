@@ -1,11 +1,25 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Detail from "./pages/Detail";
-import "./App.css";
-import "./assets/css/global.css";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 
+import "./assets/css/global.css";
+import "./App.css";
+import Navbar from "./components/Navbar";
+
 function App() {
-  return <Dashboard />;
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/detail" element={<Detail />} />
+        <Route path="/detail/:pokemonName" element={<Detail />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
