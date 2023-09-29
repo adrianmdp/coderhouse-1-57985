@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import "./assets/css/global.css";
 import "./App.css";
 import Navbar from "./components/Navbar";
+import Prueba from "./pages/Prueba";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/detail" element={<Detail />} />
         <Route path="/detail/:pokemonName" element={<Detail />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/prueba" element={<Prueba />} />
       </Routes>
     </BrowserRouter>
   );
