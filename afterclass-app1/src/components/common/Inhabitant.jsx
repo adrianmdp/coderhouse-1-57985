@@ -1,17 +1,23 @@
-const Inhabitant = ({ id, thumbnail, name, onClick, age }) => {
+import { Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
+const Inhabitant = ({ id, thumbnail, name, onClick, age, style }) => {
   return (
-    <tr key={id}>
-      <td>
-        <img src={thumbnail} alt={name} height={50} />
-      </td>
-      <td>{id}</td>
-      <td>
-        <div onClick={() => onClick({ id, thumbnail, name, onClick, age })}>
-          {name}
-        </div>
-      </td>
-      <td>{age}</td>
-    </tr>
+    <Card className="mb-4" onClick={() => onClick(id)}>
+      <Card.Img variant="top" src={thumbnail} style={style.img} />
+      <Card.Body>
+        <Card.Title>{name}</Card.Title>
+        <Card.Text>
+          <ul>
+            <li>Id: {id}</li>
+            <li>Age: {age}</li>
+          </ul>
+        </Card.Text>
+        <Link to={`/inhabitants/${name}`} className="btn btn-primary">
+          Abrir
+        </Link>
+      </Card.Body>
+    </Card>
   );
 };
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import InhabitantsTableContainer from "../components/containers/InhabitantsTableContainer";
+import InhabitantsContainer from "../components/containers/InhabitantsContainer";
 import inhabitants from "../data/inhabitants";
+import { Container } from "react-bootstrap";
 
 const Home = () => {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -16,21 +17,28 @@ const Home = () => {
       onClick: function (id) {
         estaFuncionando(id);
       },
+      style: {
+        img: {
+          width: "100%",
+          height: 263,
+          objectFit: "cover",
+        },
+      },
     };
   });
 
   return (
-    <div>
+    <Container>
       <h1>Home</h1>
 
       <ul>
         {selectedItems.map((item) => {
-          return <li>{JSON.stringify(item)}</li>;
+          return <li key={item.id}>{JSON.stringify(item)}</li>;
         })}
       </ul>
 
-      <InhabitantsTableContainer items={inhabitantsWithOnClick} />
-    </div>
+      <InhabitantsContainer items={inhabitantsWithOnClick} />
+    </Container>
   );
 };
 
