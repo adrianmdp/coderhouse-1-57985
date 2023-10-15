@@ -11,14 +11,14 @@ const Contact = () => {
 
   return (
     <div>
-      { 
+      {/* { 
         isLoading 
           ? (
             <Spinner />
           ) : (
             <FormContact />
           )
-      }
+      } */}
     </div>
   );
 };
