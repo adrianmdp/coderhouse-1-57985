@@ -5,15 +5,14 @@ const InhabitantsGrid = ({ items }) => {
   return (
     <Row>
       {items.map((item) => (
-        <Col md={3}>
+        <Col md={4} key={`item-${item.id}`}>
           <Inhabitant
-            key={item.id}
             id={item.id}
             age={item.age}
             name={item.name}
-            onClick={item.onClick}
             thumbnail={item.thumbnail}
             style={item.style}
+            actions={item.actions}
           />
         </Col>
       ))}

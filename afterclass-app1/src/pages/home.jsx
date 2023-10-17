@@ -1,43 +1,27 @@
-import { useState } from "react";
 import InhabitantsContainer from "../components/containers/InhabitantsContainer";
 import inhabitants from "../data/inhabitants";
-import { Container } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
+import SettingTeamContainer from "../components/containers/SettingTeamContainer";
+import { useEffect } from "react";
+import { teamServices } from "../services/teams";
 
 const Home = () => {
-  const [selectedItems, setSelectedItems] = useState([]);
-
-  const estaFuncionando = (item) => {
-    const newArray = [...selectedItems, item];
-    setSelectedItems(newArray);
-  };
-
-  const inhabitantsWithOnClick = inhabitants.map((inhabitant) => {
-    return {
-      ...inhabitant,
-      onClick: function (id) {
-        estaFuncionando(id);
-      },
-      style: {
-        img: {
-          width: "100%",
-          height: 263,
-          objectFit: "cover",
-        },
-      },
-    };
-  });
+  useEffect(() => {
+    teamServices.getTeams().then((data) => console.log(data));
+  }, []);
 
   return (
     <Container>
       <h1>Home</h1>
 
-      <ul>
-        {selectedItems.map((item) => {
-          return <li key={item.id}>{JSON.stringify(item)}</li>;
-        })}
-      </ul>
-
-      <InhabitantsContainer items={inhabitantsWithOnClick} />
+      <Row>
+        <Col md={8}>
+          <InhabitantsContainer items={inhabitants} />
+        </Col>
+        <Col md={4}>
+          <SettingTeamContainer />
+        </Col>
+      </Row>
     </Container>
   );
 };
